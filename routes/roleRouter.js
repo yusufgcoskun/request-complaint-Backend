@@ -7,7 +7,7 @@ const Middlewares = require('../middlewares/Middlewares')
 const { serverError } = require('../helpers/errorHelper')
 const UserModel = require('../models/UserModel')
 
-
+//deneme push
 router.post('/', Middlewares.createRole, (req, res, next) => {
 	const { name } = req.body
 	Role.create({ name })
