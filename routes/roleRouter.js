@@ -7,7 +7,7 @@ const Middlewares = require('../middlewares/Middlewares')
 const { serverError } = require('../helpers/errorHelper')
 const UserModel = require('../models/UserModel')
 
-//deneme push
+
 router.post('/', Middlewares.createRole, (req, res, next) => {
 	const { name } = req.body
 	Role.create({ name })
@@ -33,6 +33,17 @@ router.get('/updateRoleName/:roleId', Middlewares.isAdmin, (req, res, next) => {
 			res.send(role)
 		})
 		.catch(e => next(serverError(e)))
+})
+
+router.put('/updateRoleNameSettings/:roleId', (req, res, next) => {
+
+	const { roleId } = req.params
+	const { name } = req.body
+	 Role.findOneAndUpdate({ _id: roleId }, { name }, { new: true })
+	 	.then(role => {
+	 		res.send(role)
+	 	})
+	 	.catch(e => next(serverError(e)))
 })
 
 module.exports = router
