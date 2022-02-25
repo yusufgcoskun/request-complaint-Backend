@@ -12,22 +12,39 @@ const TicketType = require('../models/TicketTypeModel')
 const Role = require('../models/RoleModel')
 const { hash } = require('../helpers/Helper')
 
-//const test = async () => {
-//    await Role.findOne({name:"admin"}).then(async role => {
-//			const hash = await Helper.hash.generateHash('melkor')
-//				await User.create({
-//					roleIds:[role._id],
-//					name: 'Melkor',
-//					surname: 'Tech',
-//					email: 'admin@melkor.tech',
-//					password: hash,
-//				})
-//					.then(() => {})
-//					.catch(e => console.log(e))
-//    }).catch(e => console.log(e))
-//	
-//			}
-//test()
+// const test = async () => {
+//    await Role.create({name:"admin"}).then(async role => {
+// 			const hash = await Helper.hash.generateHash('aifactory')
+// 				await User.create({
+// 					roleIds:[role._id],
+// 					name: 'AI Factory',
+// 					surname: 'Tech',
+// 					email: 'admin@aifactory.tech',
+// 					password: hash,
+// 				})
+// 					.then(() => {})
+// 					.catch(e => console.log(e))
+//    }).catch(e => next(serverError(e)))
+	
+// 			}
+// test()
+
+// const test = async () => {
+//    await Role.create({name:"admin"}).then(async role => {
+// 			const hash = await Helper.hash.generateHash('aifactory')
+// 				await User.create({
+// 					roleIds:[role._id],
+// 					name: 'AI Factory',
+// 					surname: 'Tech',
+// 					email: 'admin@aifactory.tech',
+// 					password: hash,
+// 				})
+// 					.then(() => {})
+// 					.catch(e => console.log(e))
+//    }).catch(e => next(serverError(e)))
+	
+// 			}
+// test()
 
 router.post('/login', Middlewares.login, (req, res, next) => {
 	const { user } = res.locals
@@ -178,5 +195,20 @@ router.put(
 			.catch(e => next(serverError(e)))
 	},
 )
+
+router.put('/deleteUser/:userId',(req, res, next) => {
+
+	const { userId } = req.params
+	
+	User.findOneAndDelete({ _id: userId },(err,deletedUser)=>{
+		if(!err){
+			console.log(deletedUser)
+		}
+	}).then(user => {
+		res.send(user)
+	})
+	.catch(e => next(serverError(e)))
+	
+})
 
 module.exports = router
