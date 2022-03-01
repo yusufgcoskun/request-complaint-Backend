@@ -58,8 +58,7 @@ router.put('/:ticketTypeId', Middlewares.updateTicketType, (req, res, next) => {
 		.catch(e => next(serverError(e)))
 })
 
-router.put(
-	'/addRole/:ticketTypeId',
+router.put('/addRole/:ticketTypeId',
 	Middlewares.addRoleForTicketType,
 	(req, res, next) => {
 		const { roleId } = req.body
@@ -76,4 +75,17 @@ router.put(
 	},
 )
 
+router.put('/deleteTicketType/:ticketTypeId',(req, res, next) => {
+
+	const { ticketTypeId } = req.params
+	TicketTypeModel.findOneAndDelete({ _id: ticketTypeId },(err,deletedTicketType)=>{
+		if(!err){
+			console.log(deletedTicketType)
+		}
+	}).then(user => {
+		res.send(user)
+	})
+	.catch(e => next(serverError(e)))
+	
+})
 module.exports = router
