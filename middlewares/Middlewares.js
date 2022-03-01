@@ -43,7 +43,6 @@ const createTicketMiddlewares = [
 	validationMiddlewares.validateSurnameInput,
 	validationMiddlewares.validatePhoneNumberInput,
 	validationMiddlewares.validateEmailInput,
-	validationMiddlewares.validateTicketPurposeInput,
 	validationMiddlewares.validateIdentyNumber,
 	validationMiddlewares.validateAddressInformationInput,
 ]

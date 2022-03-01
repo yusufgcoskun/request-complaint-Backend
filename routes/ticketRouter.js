@@ -13,15 +13,12 @@ const { serverError } = require('../helpers/errorHelper')
 const Helper = require('../helpers/Helper')
 const { ticketTypeAgg, rootTicketTypeAgg } = require('../helpers/aggregateHelper')
 const { TICKET_STATUS } = require('../constants/constants')
-const RoleModel = require('../models/RoleModel')
-const { role } = require('../helpers/Helper')
 const UserModel = require('../models/UserModel')
 const { getAdminRole } = require('../helpers/roleHelper')
 const {
 	checkAndGetTicketStatus,
 	getNewAssignments,
 } = require('../helpers/ticketHelper')
-const TicketTypeModel = require('../models/TicketTypeModel')
 
 router.post('/', Middlewares.createTicket, async (req, res, next) => {
 	const uniqId = await Helper.ticket.createUniqTicketId()
@@ -138,6 +135,19 @@ router.put(
 			.catch(e => next(serverError(e)))
 	},
 )
+
+router.put('/updatePurpose/:roleId', (req, res, next) => {
+
+	const { roleId } = req.params
+	const dbpurpose = req.body.dbPurpose
+	console.log(req.body.dbPurpose)
+	
+	Ticket.findOneAndUpdate({ _id: roleId }, { purpose: dbpurpose }, { new: true })
+	 	.then(role => {
+	 		res.send(role)
+	 	})
+	 	.catch(e => next(serverError(e)))
+})
 
 router.get('/', Middlewares.verifyToken, (req, res, next) => {
 	const { _id } = res.locals.decoded

@@ -238,11 +238,6 @@ const ERROR = {
 		code: 'ticket-type-already-exists',
 		status: 400,
 	},
-	TICKET_PURPOSE_CANNOT_BE_NULL: {
-		message: 'Başvuru çeşidini boş bırakamazsınız!',
-		code: 'ticket-purpose-cannot-be-null',
-		status: 400,
-	},
 	INVALID_TICKET_PURPOSE: {
 		message: 'Geçersiz başvuru çeşidi!',
 		code: 'invalid-ticket-purpose',

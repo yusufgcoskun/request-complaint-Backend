@@ -220,25 +220,7 @@ const validateAddressInformation = (neighborhood, street, addressDescription) =>
 	}
 }
 
-const validateTicketPurpose = purpose => {
-	if (purpose) {
-		if (Object.values(TICKET_PURPOSE).includes(purpose)) {
-			return {
-				status: true,
-			}
-		} else {
-			return {
-				status: false,
-				error: createErrorWithObject(ERROR.INVALID_TICKET_PURPOSE),
-			}
-		}
-	} else {
-		return {
-			status: false,
-			error: createErrorWithObject(ERROR.TICKET_PURPOSE_CANNOT_BE_NULL),
-		}
-	}
-}
+
 
 module.exports = {
 	validationName,
@@ -250,5 +232,5 @@ module.exports = {
 	// validationTicketTitle,
 	validateAddressInformation,
 	validateTicketTypeName,
-	validateTicketPurpose,
+	
 }

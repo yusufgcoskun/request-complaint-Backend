@@ -100,8 +100,7 @@ const ticketSchema = new Schema({
 	},
 	purpose: {
 		type: String,
-		required: true,
-		enum: Object.values(TICKET_PURPOSE),
+		default: null
 	},
 	status: {
 		type: String,

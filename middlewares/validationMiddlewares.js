@@ -118,11 +118,7 @@ const validateUserRolesInput = (req, res, next) => {
 	}
 }
 
-const validateTicketPurposeInput = (req, res, next) => {
-	const { purpose } = req.body
-	const validation = Helper.input.validateTicketPurpose(purpose)
-	validation.status ? next() : next(validation.error)
-}
+
 
 module.exports = {
 	validatePhoneNumberIsUnique,
@@ -138,5 +134,5 @@ module.exports = {
 	validateUserRolesInput,
 	validateAddressInformationInput,
 	validateTicketTypeNameInput,
-	validateTicketPurposeInput,
+
 }
