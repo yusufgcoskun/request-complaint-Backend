@@ -3,7 +3,6 @@ const Schema = mongoose.Schema
 
 mongoose.set('debug', true)
 const aggregatePaginate = require('mongoose-aggregate-paginate-v2')
-const { TICKET_PURPOSE } = require('../constants/constants')
 
 const ticketSchema = new Schema({
 	ticketUniqId: {
@@ -15,6 +14,10 @@ const ticketSchema = new Schema({
 		type: [
 			{
 				_id: false,
+				modifAt: {
+					type: Date,
+		            default: null,
+				},
 				status: {
 					type: String,
 					required: true,
