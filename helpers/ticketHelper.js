@@ -249,6 +249,9 @@ const getFilterQueryByFilters = (filters, userRoleIds) => {
 	if (filters.identityNumber) {
 		filterQuerys = { ...filterQuerys, identityNumber: filters.identityNumber }
 	}
+	if (filters.ticketNumber) {
+		filterQuerys = { ...filterQuerys, ticketUniqId: filters.ticketNumber }
+	}
 	return filterQuerys
 }
 
