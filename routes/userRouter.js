@@ -12,6 +12,8 @@ const TicketType = require('../models/TicketTypeModel')
 const Role = require('../models/RoleModel')
 const { hash } = require('../helpers/Helper')
 
+const mongoose = require('mongoose')
+
 // const test = async () => {
 //    await Role.create({name:"admin"}).then(async role => {
 // 			const hash = await Helper.hash.generateHash('aifactory')
@@ -45,9 +47,29 @@ const { hash } = require('../helpers/Helper')
 	
 // 			}
 // test()
+
+//authorizedRoleIds size = 1 hatası giderir.
+/*const denemefunc = async () => {
+	let Aid = new  mongoose.Types.ObjectId() 
+	Role.findOne({name:"admin"})
+		.then(agent => {
+			Aid=agent._id
+		})
+		.catch(e => next(serverError(e)))
+
+		TicketType.findOneAndUpdate(
+			{authorizedRoleIds: {$size:1}},
+			{ $push: { authorizedRoleIds: mongoose.Types.ObjectId("5feae7d5ced7b0897b11ce90") } }
+		).then(ticketType => {
+			console.log("1")
+		})
+		.catch(e => next(serverError(e)))
+}
+denemefunc()*/
 
 router.post('/login', Middlewares.login, (req, res, next) => {
 	const { user } = res.locals
+	console.log(user)
 	Helper.user
 		.generateToken(user)
 		.then(token => {
@@ -168,8 +190,7 @@ router.get('/findByRole/:roleId', (req, res, next) => {
 		.catch(e => next(serverError(e)))
 })
 
-router.put(
-	'/updateUserProfile/:userId',
+router.put('/updateUserProfile/:userId',
 	Middlewares.updateUser,
 	async (req, res, next) => {
 		const userIp = req.headers['x-forwarded-for']

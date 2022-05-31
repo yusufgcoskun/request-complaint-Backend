@@ -22,6 +22,15 @@ router.get('/', Middlewares.verifyToken, (req, res, next) => {
 		})
 		.catch(e => next(serverError(e)))
 })
+router.get('/updateRoleName/:roleId', Middlewares.isAdmin, (req, res, next) => {
+	const { roleId } = req.params
+	const { name } = req.body
+	Role.findOneAndUpdate({ _id: roleId }, { name }, { new: true })
+		.then(role => {
+			res.send(role)
+		})
+		.catch(e => next(serverError(e)))
+})
 
 router.put('/updateRoleNameSettings/:roleId', (req, res, next) => {
 

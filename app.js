@@ -18,6 +18,7 @@ app.use(
 			'http://localhost:8888',
 			'https://mezitli.bel.tr',
 			'http://localhost:3002',
+			'http://localhost:3001',
 		],
 		optionsSuccessStatus: 200,
 	}),

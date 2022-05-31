@@ -74,8 +74,7 @@ router.post('/', Middlewares.createTicket, async (req, res, next) => {
 	}
 })
 
-router.put(
-	'/assignmentAndStatusInformations/:ticketId',
+router.put(	'/assignmentAndStatusInformations/:ticketId',
 	Middlewares.updateTicketAssignmentAndStatusInformations,
 	(req, res, next) => {
 		const { assignmentAndStatusInformations, sendSms } = req.body

@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer')
 const { ticketEmail } = require('../models/EmailModel')
-const TicketTypeModel = require('../models/TicketTypeModel')
 const { findTicketTypesAndAuthorizedUsers } = require('./ticketTypeHelper')
 
 const sendEmail = async emailModel => {
