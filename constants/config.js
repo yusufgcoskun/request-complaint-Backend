@@ -1,10 +1,10 @@
 module.exports = {
 	API_SECRET_KEY: 'sshelf',
-	DB_URL: 'mongodb://localhost/mezitli',
+	DB_URL: 'mongodb://localhost/SMSlocal',
 
 	SMS_SERVICE: {
-		USERNAME: 'mezitlibld',
-		PASSWORD: 'M8E3T7L2',
-		ORIGIN: 'MEZiTLi BLD',
+		USERNAME: 'USERNAME',
+		PASSWORD: 'PASSWORD',
+		ORIGIN: 'ORIGIN',
 	},
 }
