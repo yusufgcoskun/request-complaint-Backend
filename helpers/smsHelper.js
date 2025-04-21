@@ -27,7 +27,7 @@ const createTextForMessageAlert = ticket => {
 }
 
 const createTextForTicketCreation = ticket => {
-	return `Sayın ${ticket.ownerName} ${ticket.ownerSurname} ${ticket.ticketUniqId} numaralı talebiniz oluşturuldu. Talebinizin güncel durumunu https://mezitli.bel.tr/mezitli-halk-masasi/ adresinden takip edebilirsiniz.
+	return `Sayın ${ticket.ownerName} ${ticket.ownerSurname} ${ticket.ticketUniqId} numaralı talebiniz oluşturuldu. Talebinizin güncel durumunu https://localhost/Tickets/ adresinden takip edebilirsiniz.
 	Sağlıklı günler dileriz.`
 }
 
