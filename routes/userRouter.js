@@ -14,22 +14,6 @@ const { hash } = require('../helpers/Helper')
 
 const mongoose = require('mongoose')
 
-// const test = async () => {
-//    await Role.create({name:"admin"}).then(async role => {
-// 			const hash = await Helper.hash.generateHash('aifactory')
-// 				await User.create({
-// 					roleIds:[role._id],
-// 					name: 'AI Factory',
-// 					surname: 'Tech',
-// 					email: 'admin@aifactory.tech',
-// 					password: hash,
-// 				})
-// 					.then(() => {})
-// 					.catch(e => console.log(e))
-//    }).catch(e => next(serverError(e)))
-	
-// 			}
-// test()
 
 // const test = async () => {
 //    await Role.create({name:"admin"}).then(async role => {
